@@ -2,7 +2,7 @@
 const titleInput = document.getElementById('title-input');
 const bodyInput = document.getElementById('body-input');
 const generateBtn = document.getElementById('generate-btn');
-const imagePreviewDiv = document.getElementById('image-preview');
+const imagePreviewDiv = document.getElementById('image-preview-outer');
 const previewTitle = document.getElementById('preview-title');
 const previewBody = document.getElementById('preview-body');
 

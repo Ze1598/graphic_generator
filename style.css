@@ -76,20 +76,26 @@ hr {
     width: 100%;
     display: flex;
     justify-content: center; /* Center the preview box horizontally */
-    padding: 20px 0;
+}
+
+/* New outer container that will be captured in the image */
+#image-preview-outer {
+    background-color: white;
+    padding: 5px;          /* This creates the space between border and image edge */
+    width: 100%;
+    max-width: 570px;       /* Increased to accommodate padding + inner width */
+    box-sizing: border-box;
 }
 
 /* The actual element that mimics the image */
 #image-preview {
     background-color: white;
-    border: 1px solid lightgrey; /* Light grey border */
-    border-radius: 10px;      /* Rounded corners */
-    padding: 25px 35px;       /* Padding: top/bottom left/right (adjust for margins) */
-    width: 90%;               /* Use percentage width */
-    max-width: 450px;         /* Max width like the example */
+    border: 2px solid #c8c3c3; /* Border color */
+    border-radius: 15px;      /* Rounded corners */
+    padding: 40px 50px;       /* Inner padding */
+    width: 100%;              /* Fill the outer container */
     box-sizing: border-box;   /* Include padding and border in the width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
-    /* Height will be determined by content */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* Shadow for depth */
 }
 
 #preview-title {
