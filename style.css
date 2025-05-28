@@ -111,6 +111,58 @@ hr {
     text-align: left;
     line-height: 1.6;        /* Spacing between lines */
     color: #444;
-    white-space: pre-wrap;   /* Respect line breaks from input */
     word-wrap: break-word;   /* Wrap long words */
+}
+
+/* Markdown styling for preview */
+#preview-title h1, #preview-title h2, #preview-title h3,
+#preview-body h1, #preview-body h2, #preview-body h3 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+#preview-body p {
+    margin-bottom: 1em;
+}
+
+#preview-body ul, #preview-body ol {
+    padding-left: 2em;
+    margin-bottom: 1em;
+}
+
+#preview-body li {
+    margin-bottom: 0.5em;
+}
+
+#preview-body a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+#preview-body code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+#preview-body pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 1em;
+}
+
+#preview-body blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 1em;
+    margin-left: 0;
+    color: #666;
+}
+
+#preview-body img {
+    max-width: 100%;
+    height: auto;
 }

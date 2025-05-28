@@ -10,13 +10,13 @@ const previewBody = document.getElementById('preview-body');
 function updatePreview() {
     // Update title, use placeholder if empty
     const titleText = titleInput.value.trim();
-    previewTitle.textContent = titleText || "Your Title Here"; // Default text
+    // Parse title as markdown
+    previewTitle.innerHTML = titleText ? marked.parse(titleText) : "Your Title Here"; // Default text
 
-    // Update body text, handle line breaks, use placeholder if empty
+    // Update body text, parse markdown, use placeholder if empty
     const bodyText = bodyInput.value.trim();
-    // Replace newline characters with <br> tags for HTML rendering if needed,
-    // but 'white-space: pre-wrap;' in CSS handles this better for textContent.
-    previewBody.textContent = bodyText || "Your body text will appear here. \nEnter text above to see it update."; // Default text
+    // Use marked to parse markdown to HTML
+    previewBody.innerHTML = bodyText ? marked.parse(bodyText) : "Your body text will appear here. <br>Enter text above to see it update."; // Default text
 }
 
 // --- Function to generate and download the image ---
