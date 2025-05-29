@@ -23,12 +23,19 @@ function updatePreview() {
 function generateImage() {
     console.log("Generating image..."); // Log start
 
+    // Determine optimal scale based on device width
+    // Use higher scale for smaller screens to ensure text remains readable
+    const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    const optimalScale = viewportWidth < 768 ? 3 : 2; // Higher scale on mobile
+    
     // Options for html2canvas (optional, but can improve quality)
     const options = {
-        scale: 2, // Increase scale for higher resolution
+        scale: optimalScale, // Dynamic scale based on device
         useCORS: true, // If you were loading external images/fonts
         backgroundColor: '#ffffff', // Ensure white background
-        logging: true // Show logs from html2canvas for debugging
+        logging: true, // Show logs from html2canvas for debugging
+        allowTaint: true, // Allow cross-origin images
+        foreignObjectRendering: true // Better handling of CSS
     };
 
     html2canvas(imagePreviewDiv, options).then(canvas => {
@@ -40,7 +47,15 @@ function generateImage() {
         // Create a temporary link element for download
         const downloadLink = document.createElement('a');
         downloadLink.href = imageDataUrl;
-        downloadLink.download = 'generated-image.png'; // Set the filename for download
+        
+        // Create filename with date and viewport size info
+        const date = new Date();
+        const dateStr = date.toISOString().split('T')[0]; // YYYY-MM-DD format
+        const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        
+        // Set the filename with date and viewport info
+        downloadLink.download = `markdown-image-${dateStr}-${viewportWidth}x${viewportHeight}.png`;
 
         // Trigger the download
         document.body.appendChild(downloadLink); // Required for Firefox
